@@ -31,17 +31,31 @@
         <div ref="wrap"
             class="bk-search-select"
             :class="{ 'is-focus': input.focus }"
-            @click="handleWrapClick">
+            @click.self="handleWrapClick">
             <div class="search-prefix">
                 <slot name="prefix"></slot>
             </div>
             <div class="search-input" :style="{ maxHeight: (shrink ? (input.focus ? maxHeight : minHeight) : maxHeight) + 'px' }">
-                <div v-for="(item,index) in chip.list" class="search-input-chip" :key="index">
-                    <span class="chip-name">
-                        {{item[displayKey] + (item.values && item.values.length ? explainCode + (item.condition ? item.condition[displayKey] : '') + item.values.map(v => v[displayKey]).join(splitCode) : '')}}
-                    </span>
-                    <span class="chip-clear bk-icon icon-close" @click="handleClear(index,item)"></span>
-                </div>
+                <template v-for="(item,index) in chip.list">
+                    <div v-if="!item.edit" :key="`div-${index}`" class="search-input-chip">
+                        <span class="chip-name" @click="handleEditChip($event, item, index)">
+                            {{item[displayKey] + (item.values && item.values.length ? explainCode + (item.condition ? item.condition[displayKey] : '') + item.values.map(v => v[displayKey]).join(splitCode) : '')}}
+                        </span>
+                        <span class="chip-clear bk-icon icon-close" @click="handleClear(index,item)"></span>
+                    </div>
+                    <template v-else>
+                        <span
+                            :ref="`value-${index}`"
+                            :key="`value-${index}`"
+                            contenteditable="plaintext-only"
+                            class="search-input-chip edit-chip"
+                            @click="handleChipClick($event,item)"
+                            @keydown="handleChipKeydown($event,item, index)"
+                            @blur="handleChipBlur($event, item)">
+                            {{editChipItem ? editChipItem.text : ''}}
+                        </span>
+                    </template>
+                </template>
                 <div class="search-input-input">
                     <div
                         ref="input"
@@ -72,6 +86,13 @@
                 <i class="bk-icon icon-exclamation-circle-shape select-tips"></i>{{validateStr || ''}}
             </slot>
         </div>
+        <div style="display: none">
+            <div class="bk-search-list" ref="chipMenu">
+                <ul class="bk-search-list-menu">
+                    <li class="bk-search-list-menu-item" v-for="(item, index) in chipMenuList" :key="index">{{item.name}}</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -82,13 +103,13 @@
     import clickoutside from '@/directives/clickoutside.js'
     import locale from 'bk-magic-vue/lib/locale'
     import Vue from 'vue'
-
+    import editChipMixin from './search-select-mixin'
     export default {
         name: 'bk-search-select',
         directives: {
             clickoutside
         },
-        mixins: [locale.mixin],
+        mixins: [locale.mixin, editChipMixin],
         model: {
             prop: 'values',
             event: 'change'

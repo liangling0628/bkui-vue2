@@ -208,6 +208,7 @@
                     pre = text.slice(0, i)
                     next = text.slice(i + filter.length, text.length)
                 }
+                // console.info(text, multiable, child, checked[text], !isChildCondition, multiable && child && checked[text] && !isChildCondition)
                 return (
                     <li class={{ 'bk-search-list-menu-item': true, 'is-group': !!item.isGroup, 'is-disabled': item.disabled, 'is-hover': !item.disabled && hoverId === id }}>
                         <div {...events} class={{ 'item-name': true }}>
@@ -217,7 +218,7 @@
                                     : text
                             }
                         </div>
-                        <span v-show={multiable && child && checked[text] && !isChildCondition} ref={id}
+                        <span v-show={multiable && child && checked[id] && !isChildCondition} ref={id}
                             class={{ 'bk-icon icon-check-1 item-icon': true }}></span>
                     </li>
                 )

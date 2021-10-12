@@ -56,6 +56,12 @@
                 background: #f0f1f5;
                 border-radius: 2px;
                 line-height: 22px;
+                &.edit-chip {
+                    background: none;
+                    &:hover {
+                        background: none;
+                    }
+                }
                 &:hover {
                     background: #dcdee5;
                     .chip-clear {
