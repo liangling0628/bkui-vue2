@@ -8,6 +8,12 @@
 
 <div class="changelog-wrapper">
 
+### 2.5.9-beta.35 {page=#/changelog}
+
+* **[fix]**:
+    - bugfix(bix-tree): 虚拟滚动模式节点勾选时勾选状态没变
+
+
 ### 2.5.9-beta.34 {page=#/changelog}
 
 * **[feat]**:
