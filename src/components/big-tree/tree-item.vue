@@ -30,6 +30,7 @@
   <div class="bk-big-tree-node clearfix"
     v-if="props.node.visible"
     :id="props.node.uid"
+    :key="`${props.node.id}#${props.node.tree.nodes.length}`"
     :class="{
       'is-root': props.node.parent === null,
       'is-leaf': !props.node.isFolder && props.node.isLeaf,
