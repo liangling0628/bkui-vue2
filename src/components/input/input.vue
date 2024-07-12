@@ -594,13 +594,15 @@ export default {
       }
     },
     handleNumberDelete (event) {
+      let flag = false
       if (this.curValue === '') {
+        flag = true
         this.curValue = this.initialControlValue === undefined ? this.max : Math.min(this.initialControlValue, this.max)
       }
       const curNumberValue = Number(this.curValue)
       if (curNumberValue - 1 >= this.min) {
         const curLenAfterDot = (String(curNumberValue) || '').split('.')[1] || ''
-        let newVal = curNumberValue - 1
+        let newVal = flag ? curNumberValue : curNumberValue - 1
         if (typeof this.precision !== 'undefined') {
           newVal = this.handleToFixed(newVal, Math.min(16, Math.max(curLenAfterDot.length, this.precision)))
         }
@@ -611,13 +613,15 @@ export default {
       }
     },
     handleNumberAdd (event) {
+      let flag = false
       if (this.curValue === '') {
+        flag = true
         this.curValue = this.initialControlValue === undefined ? this.min : Math.max(this.initialControlValue, this.min)
       }
       const curNumberValue = Number(this.curValue)
       if (curNumberValue <= this.max - 1) {
         const curLenAfterDot = (String(curNumberValue) || '').split('.')[1] || ''
-        let newVal = curNumberValue + 1
+        let newVal = flag ? curNumberValue : curNumberValue + 1
         if (typeof this.precision !== 'undefined') {
           newVal = this.handleToFixed(newVal, Math.min(16, Math.max(curLenAfterDot.length, this.precision)))
         }
