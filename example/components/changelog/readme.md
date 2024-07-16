@@ -8,6 +8,12 @@
 
 <div class="changelog-wrapper">
 
+### 2.5.9-beta.36 {page=#/changelog}
+
+* **[fix]**:
+    - bugfix(input): 修复数字输入框在空值的时候点击上下按键不显示最大/小值的问题
+
+
 ### 2.5.9-beta.35 {page=#/changelog}
 
 * **[fix]**:
