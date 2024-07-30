@@ -197,5 +197,8 @@
   "vetur": {
     "tags": "./bkui-vue2-helper/tags.json",
     "attributes": "./bkui-vue2-helper/attributes.json"
+  },
+  "engines": {
+    "node": "<= 16.14"
   }
 }
