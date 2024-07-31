@@ -8,6 +8,14 @@
 
 <div class="changelog-wrapper">
 
+### 2.5.9-beta.37 {page=#/changelog}
+
+* **[add]**:
+    - [Input 输入框](#/input) 新增 `allow-emoji` 属性，配置文本框是否允许输入表情，默认为 `true`
+* **[fix]**:
+    - bugfix(table): selection类型列 header-render失效 #559 & 配置化表格hover全选按钮会丢失填充背景色
+
+
 ### 2.5.9-beta.36 {page=#/changelog}
 
 * **[fix]**:
