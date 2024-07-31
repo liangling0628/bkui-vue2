@@ -101,6 +101,37 @@
 ```
 :::
 
+### 不能允许输入表情 {page=#/input}
+
+::: demo 通过 `allow-emoji` 属性，配置是否允许文本框输入表情，默认为 `true`，设置为 `false` 时，不允许输入表情，此时文本框会自动把输入的表情过滤掉
+``` html
+<template>
+    <div class="input-demo">
+        <bk-input :allow-emoji="false" v-model="value"></bk-input>
+    </div>
+</template>
+<script>
+    import { bkInput } from '{{BASE_LIB_NAME}}'
+
+    export default {
+        components: {
+            bkInput
+        },
+        data () {
+            return {
+                value: 'wwww'
+            }
+        }
+    }
+</script>
+<style lang="postcss">
+    .input-demo {
+        width: 500px;
+    }
+</style>
+```
+:::
+
 ### hover 时才显示 clear 按钮{page=#/input}
 
 ::: demo 配置`show-clear-only-hover`为true时，清除按钮在hover时才会显示
@@ -712,6 +743,7 @@
 | allow-number-paste | 允许type为number时可粘贴 | Boolean | —— | false |
 | show-overflow-tooltips | 文本超出长度是否显示tooltips | Boolean | —— | false |
 | initial-control-value | 设置上下键调整数值时的起始值 | Number | —— | —— |
+| allow-emoji | 是否允许文本框输入表情，默认为 `true`，设置为 `false` 时，不允许输入表情，此时文本框会自动把输入的表情过滤 | Boolean | —— | true |
 
 ### 事件 {page=#/input}
 
