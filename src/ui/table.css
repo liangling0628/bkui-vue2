@@ -42,7 +42,7 @@ $tableDarkHeaderHover: #eaebf0;
     &.bk-table-dark-header {
         th {
             background-color: $tableDarkHeader;
-            :hover {
+            .cell:hover {
                 background-color: $tableDarkHeaderHover
             }
         }

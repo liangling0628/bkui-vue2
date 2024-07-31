@@ -387,12 +387,14 @@ export default {
       let value = source[prop]
       if (value !== undefined) {
         if (prop === 'renderHeader') {
-          if (type === 'selection' && column[prop]) {
-            // eslint-disable-next-line max-len
-            console.warn('[Magic Warn][TableColumn]Selection column doesn\'t allow to set render-header function.')
-          } else {
-            value = column[prop] || value
-          }
+          // if (type === 'selection' && column[prop]) {
+          //   // eslint-disable-next-line max-len
+          //   console.warn('[Magic Warn][TableColumn]Selection column doesn\'t allow to set render-header function.')
+          // } else {
+          //   value = column[prop] || value
+          // }
+
+          value = column[prop] || value
         }
         column[prop] = prop === 'className' ? `${column[prop]} ${value}` : value
       }
