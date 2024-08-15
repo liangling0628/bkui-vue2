@@ -80,7 +80,7 @@ export default {
     },
     size: {
       type: String,
-      default: 'normal',
+      default: 'small',
       validator (value) {
         if (['small', 'normal', 'large'].indexOf(value) < 0) {
           console.error(`size property is not valid: '${value}'`)
