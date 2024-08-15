@@ -8,6 +8,12 @@
 
 <div class="changelog-wrapper">
 
+### 2.5.9-beta.38 {page=#/changelog}
+
+* **[update]**:
+    - - [Progress 进度条](#/progress) size 默认值改为 `small`
+
+
 ### 2.5.9-beta.37 {page=#/changelog}
 
 * **[add]**:
