@@ -8,10 +8,16 @@
 
 <div class="changelog-wrapper">
 
+### 2.5.9-beta.39 {page=#/changelog}
+
+* **[update]**:
+    - [Big Tree 大树](#/big-tree) 修复 removeNode 失效的问题
+
+
 ### 2.5.9-beta.38 {page=#/changelog}
 
 * **[update]**:
-    - - [Progress 进度条](#/progress) size 默认值改为 `small`
+    - [Progress 进度条](#/progress) size 默认值改为 `small`
 
 
 ### 2.5.9-beta.37 {page=#/changelog}
