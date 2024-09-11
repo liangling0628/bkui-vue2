@@ -449,18 +449,19 @@ export default {
             nodes.push(node)
           }
         })
+        const lastNodes = [...this.nodes]
+
         // 从最大的node.index开始倒序splice
         nodes.sort((M, N) => N.index - M.index)
         nodes.forEach(node => {
           const removeNodes = [node, ...node.descendants]
-          this.nodes.splice(node.index, removeNodes.length)
+          lastNodes.splice(node.index, removeNodes.length)
           if (node.parent) {
             node.parent.removeChild(node)
           }
         })
         const minChangedIndex = Math.min(...nodes.map(node => node.index))
 
-        const lastNodes = [...this.nodes]
         lastNodes.slice(minChangedIndex).forEach((node, index) => {
           node.index = minChangedIndex + index
         })
