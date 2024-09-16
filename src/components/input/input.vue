@@ -280,7 +280,11 @@ export default {
       type: Boolean,
       default: false
     },
-    initialControlValue: Number
+    initialControlValue: Number,
+    allowEmoji: {
+      type: Boolean,
+      default: true
+    }
   },
   data () {
     return {
@@ -727,7 +731,6 @@ export default {
           }
         }
       }
-
       this.$emit('keydown', value, event)
     },
     handlerFocus (event) {
@@ -807,8 +810,16 @@ export default {
       if (this.inputType === 'number' && this.isOnComposition) {
         return
       }
+
       this.$nextTick(() => {
-        const value = event.target.value
+        let value = event.target.value
+        if (!this.allowEmoji) {
+          value = value.replace(
+            /[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF][\u200D|\uFE0F]|[\uD83C|\uD83D|\uD83E][\uDC00-\uDFFF]|[0-9|*|#]\uFE0F\u20E3|[0-9|#]\u20E3|[\u203C-\u3299]\uFE0F\u200D|[\u203C-\u3299]\uFE0F|[\u2122-\u2B55]|\u303D|[\A9|\AE]\u3030|\uA9|\uAE|\u3030/ig,
+            ''
+          )
+        }
+
         this.setCurValue(value)
         this.$emit('input', value, event)
         this.$emit('change', value, event)

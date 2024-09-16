@@ -176,7 +176,7 @@
 |------|------|------|------|------|
 | theme | 显示类型 | String | `primary` / `warning` / `success` / `danger` | `primary` |
 | percent | 进度百分比 | Number | 0 < `percent` < 1 | —— |
-| size | 尺寸 | String | `small` / `normal` / `large` |`normal`|
+| size | 尺寸 | String | `small` / `normal` / `large` |`small`|
 | stroke-width | 进度条的宽度，单位 px | Number | —— | —— |
 | text-inside | 进度条显示文字内置在进度条内 | Boolean | `true` `false` | false |
 | color | 进度条背景色 | String | —— | —— |

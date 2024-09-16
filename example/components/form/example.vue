@@ -30,11 +30,8 @@
   <section>
     <div class="example-item">
       <bk-form :label-width="200" :model="formData" :rules="rules" ref="validateForm1">
-        <bk-form-item label="测试环境地址" :property="'docker_hub'" :error-display-type="'normal'">
+        <bk-form-item label="test" :property="'docker_hub'" :error-display-type="'normal'" :desc="desc">
           <bk-input v-model="formData.docker_hub"></bk-input>
-        </bk-form-item>
-        <bk-form-item label="涉及外部域名" :property="'extra_domains'" :error-display-type="'normal'">
-          <bk-input v-model="formData.extra_domains"></bk-input>
         </bk-form-item>
       </bk-form>
     </div>
@@ -53,6 +50,7 @@ export default {
   data () {
     return {
       isChecking: false,
+      desc: '<h1 style="color: red">asdsad</h1>',
       formData: {
         docker_hub: '',
         extra_domains: ''
