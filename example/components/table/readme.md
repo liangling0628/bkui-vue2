@@ -1,6 +1,6 @@
 <script>
     import Vue from 'vue'
-    import { bkTable, bkTableColumn, bkButton, bkInput, bkTooltips, bkTableSettingContent, bkPopover } from '@'
+    import { bkTable, bkTableColumn, bkButton, bkInput, bkTooltips, bkTableSettingContent, bkPopover, bkDropdownMenu  } from '@'
 
     Vue.use(bkTooltips)
 
@@ -11,7 +11,8 @@
         bkButton,
         bkInput,
         bkTableSettingContent,
-        bkPopover
+        bkPopover,
+        bkDropdownMenu
       },
       data () {
         const settingFields = [{
@@ -508,6 +509,7 @@
             :size="size"
             :pagination="pagination"
             :shift-multi-checked="true"
+            dark-header
             @row-mouse-enter="handleRowMouseEnter"
             @row-mouse-leave="handleRowMouseLeave"
             @page-change="handlePageChange"
@@ -1148,6 +1150,7 @@
             :size="setting.size"
             @selection-change="handleSelectionChange"
             dark-header>
+            <bk-table-column type="selection" width="60" ></bk-table-column>
             <bk-table-column
                 v-for="field in setting.selectedFields"
                 :key="field.id"

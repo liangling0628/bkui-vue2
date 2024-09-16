@@ -49,6 +49,7 @@ const defaultOptions = {
   boundary: 'window',
   content: '',
   allowHTML: true,
+  disabledHtmlStrAsQuery: false,
   extCls: ''
 }
 
@@ -102,7 +103,7 @@ const createTippy = (el, binding) => {
       options.content = selector.$el
     } else if (typeof selector === 'string') {
       try {
-        const element = document.querySelector(selector)
+        const element = options.disabledHtmlStrAsQuery ? selector : document.querySelector(selector)
         if (element) {
           options.content = element
         }
