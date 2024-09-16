@@ -339,23 +339,6 @@
         }
       },
       methods: {
-        renderHeader() {
-            return <div>
-                <bk-dropdown-menu positionFixed={false}>
-                    <template slot="dropdown-trigger">
-                    <label>自定义组件:</label>
-                    </template>
-                    <ul className="bk-dropdown-list" slot="dropdown-content">
-                    <li><a href="javascript:;">生产环境</a></li>
-                    无效，但是单独放到组件
-                    里面是可以看到下拉的
-                    <li><a href="javascript::">预发布环境</a></li>
-                    <li><a href="javascript::">测试环境</a></li>
-                    <li><a href="javascript:;">正式环境</a></li>
-                    </ul>
-                    </bk-dropdown-menu>
-            </div>
-        },
         handleSelectionChange (...args) {
           console.log('handle handleSelectionChange', args)
         },
@@ -416,14 +399,14 @@
         reset (row) {
           row.status = '创建中'
         },
-        // renderHeader (h, data) {
-        //   const directive = {
-        //     name: 'bkTooltips',
-        //     content: '指定对标题或者专有词汇的补充说明，并可以说明“禁止”“注意”等要求性文字',
-        //     placement: 'right'
-        //   }
-        //   return <a class="custom-header-cell" v-bk-tooltips={ directive }>{ data.column.label }</a>
-        // },
+        renderHeader (h, data) {
+          const directive = {
+            name: 'bkTooltips',
+            content: '指定对标题或者专有词汇的补充说明，并可以说明“禁止”“注意”等要求性文字',
+            placement: 'right'
+          }
+          return <a class="custom-header-cell" v-bk-tooltips={ directive }>{ data.column.label }</a>
+        },
         handleRowMouseEnter (index) {
           console.info(`进入行：${index}`)
         },
@@ -532,9 +515,9 @@
             @page-change="handlePageChange"
             @page-limit-change="handlePageLimitChange"
             @selection-change="handleSelectionChange">
-            <bk-table-column type="selection" width="60" :render-header="renderHeader"></bk-table-column>
-            <bk-table-column type="index" label="序列" width="60" :render-header="renderHeader"></bk-table-column>
-            <bk-table-column label="名称/内网IP" prop="ip" :render-header="renderHeader"></bk-table-column>
+            <bk-table-column type="selection" width="60"></bk-table-column>
+            <bk-table-column type="index" label="序列" width="60"></bk-table-column>
+            <bk-table-column label="名称/内网IP" prop="ip"></bk-table-column>
             <bk-table-column label="来源" prop="source"></bk-table-column>
             <bk-table-column label="状态" prop="status"></bk-table-column>
             <bk-table-column label="创建时间" prop="create_time" ></bk-table-column>
